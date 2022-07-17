@@ -1,0 +1,32 @@
+#* @vtlvariable name="pageLink" type="de.mirieger.midoc.model.PageLink" *#
+
+<div class="mi-doc-incoming-links">
+    #if($links && $links.size() > 0)
+        #if($count)
+            <p>Links: $links.size()</p>
+        #end
+        #if ($style == 'BR')
+            #foreach($pageLink in $links)
+                <a href="$pageLink.getLink()">$pageLink.getTitle()</a><br/>
+            #end
+        #else
+            #if($style == 'NUMBER')
+                <ol>
+            #elseif($style == 'BULLET')
+                <ul>
+            #end
+                #foreach($pageLink in $links)
+                    <li>
+                        <a href="$pageLink.getLink()">$pageLink.getTitle()</a>
+                    </li>
+                #end
+            #if($style == 'NUMBER')
+                </ol>
+            #elseif($style == 'BULLET')
+                </ul>
+            #end
+        #end
+    #else
+        <p>Keine Links</p>
+    #end
+</div>

@@ -1,0 +1,32 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">/de/mirieger/midoc/images/pluginLogo.jpg</param>
+        <param name="plugin-logo">/de/mirieger/midoc/images/pluginLogo.jpg</param>
+    </plugin-info>
+
+    <!-- add our web resources -->
+    <resource name="images/" type="download" location="/de/mirieger/midoc/images"/>
+    <resource name="pluginLogo.jpg" type="download" location="/de/mirieger/midoc/images/pluginLogo.jpg"/>
+    <web-resource key="mi-doc-resources" name="Web Resources">
+        <resource type="download" name="mi-doc.css" location="/de/mirieger/midoc/css/mi-doc.css"/>
+    </web-resource>
+
+    <xhtml-macro name="incoming-links"
+                 class="de.mirieger.midoc.macro.IncomingLinksMacro"
+                 icon="/download/resources/${project.groupId}.${project.artifactId}/pluginLogo.jpg"
+                 key="mi-doc-incoming-links-macro">
+        <category name="confluence-content"/>
+        <parameters>
+            <parameter name="style" type="enum" required="true" default="BR">
+                <value name="BR" />
+                <value name="NUMBER" />
+                <value name="BULLET" />
+            </parameter>
+            <parameter name="label" type="string" required="false" />
+            <parameter name="count" type="boolean" required="false" />
+        </parameters>
+    </xhtml-macro>
+</atlassian-plugin>
